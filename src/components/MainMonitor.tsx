@@ -3,6 +3,8 @@ import { Box, Button, Container, Modal } from "@mui/material";
 import { TypeAnimation } from "react-type-animation"
 import Grid from '@mui/material/Grid'
 import Link from "next/link";
+import { FullDossier } from "./FullDossier";
+import { DossierMainPage } from "./DossierMainPage";
 
 const style = {
     monitor: {
@@ -12,11 +14,12 @@ const style = {
         transform: 'translate(-50%, -50%)',
         width: '90vw',
         height: '50vw',
+        minWidth: '500px',
         border: '10px solid silver',
         borderRadius: '15px',
         backgroundColor: '#000',
         boxShadow: 24,
-        p: 1,
+        padding: '10px',
     },
     openButton: {
         color: '#fff'
@@ -31,7 +34,7 @@ const style = {
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         margin: 'auto'
     },
     information: {
@@ -47,7 +50,7 @@ const style = {
 export const MainMonitor = () => {
 
     const [loading, setLoading] = useState(true)
-
+    const [page, setPage] = useState('mainPage')
 
 
     const [open, setOpen] = useState(false);
@@ -94,18 +97,11 @@ export const MainMonitor = () => {
                         deletionSpeed={80}
                         style={style.loadingText}
                     />}
-                    {!loading && <Grid container spacing={2} sx={style.contentWrapper}>
-                        <Grid item xs={3} sx={style.photo}>
-                        </Grid>
-                        <Grid item container xs={7} style={style.information}>
-                            <Grid item>
-                                Рагозин Сергей Олегович
-                            <Link href={'*/dossier'}>Открыть полное досье</Link>
-                            </Grid>
-                            <Grid item>
-
-                            </Grid>
-                        </Grid>
+                    {(!loading && page === 'mainPage') && <Grid container spacing={2} sx={style.contentWrapper}>
+                        <DossierMainPage setPage={setPage}/>
+                    </Grid>}
+                    {(!loading && page === 'FullDossier') && <Grid container spacing={2} sx={style.contentWrapper}>
+                        <FullDossier setPage={setPage}/>
                     </Grid>}
                 </Box>
             </Modal>
