@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Box, Button, Container, Modal } from "@mui/material";
+import { Box, Button, Modal } from "@mui/material";
 import { TypeAnimation } from "react-type-animation"
 import Grid from '@mui/material/Grid'
-import Link from "next/link";
 import { FullDossier } from "./FullDossier";
 import { DossierMainPage } from "./DossierMainPage";
 
@@ -39,11 +38,6 @@ const style = {
     },
     information: {
         padding: '10px'
-    },
-    photo: {
-        width: '30%',
-        height: '80%',
-        backgroundColor: '#fff',
     },
 }
 
@@ -97,10 +91,10 @@ export const MainMonitor = () => {
                         deletionSpeed={80}
                         style={style.loadingText}
                     />}
-                    {(!loading && page === 'mainPage') && <Grid container spacing={2} sx={style.contentWrapper}>
+                    {(!loading && page === 'mainPage') && <Grid container sx={style.contentWrapper}>
                         <DossierMainPage setPage={setPage}/>
                     </Grid>}
-                    {(!loading && page === 'FullDossier') && <Grid container spacing={2} sx={style.contentWrapper}>
+                    {(!loading && page === 'FullDossier') && <Grid container sx={style.contentWrapper}>
                         <FullDossier setPage={setPage}/>
                     </Grid>}
                 </Box>

@@ -52,7 +52,7 @@ const style = {
     position: 'fixed',
     height: '150vw',
     backgroundImage: `url(${cosmos.src})`,
-    animation: `${rotateCosmos} 360s linear infinite`,
+    animation: `${rotateCosmos} 1000s linear infinite`,
     top: '-25vw',
     left: '-25vw',
     zIndex: -1

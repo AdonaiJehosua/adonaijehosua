@@ -1,6 +1,7 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Divider } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import photo from '../images/authorPhoto.jpg'
 
 const style = {
     openButton: {
@@ -20,21 +21,22 @@ const style = {
         margin: 'auto'
     },
     information: {
-        padding: '0 10px',
+        border: '1px solid white',
+        borderRadius: '5px',
+        marginLeft: '10px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start'
     },
     photo: {
-        width: '30%',
-        height: '80%',
-        backgroundColor: '#fff',
+        width: '100%',
+        border: '1px solid white',
+        borderRadius: '5px'
     },
     infoItem: {
-        border: '1px solid white',
-        borderRadius: '5px',
+        borderBottom: '1px solid white',
         padding: '5px',
-        marginBottom: '5px'
+        margin: '0 0 5px 5px'
     }
 }
 
@@ -55,19 +57,19 @@ const age = () => {
 export function DossierMainPage({ setPage }) {
     return (
         <>
-            <Grid item xs={3} sx={style.photo}>
+            <Grid item container xs={3} >
+                <Box component={'img'} sx={style.photo} alt={'photo'} src={photo.src} />
             </Grid>
             <Grid item container xs={9} style={style.information}>
                 <Typography variant={'h6'} sx={style.infoItem}>Рагозин Сергей Олегович</Typography>
-                <Box sx={style.infoItem}>{`Дней на орбите: ${days()}`}</Box>
-                <Box sx={style.infoItem}><Typography component={'span'}>Ключевые навыки: </Typography>джиэс, эйчтиэмэл, цеэсэс, нод джиэс, капээсэс, гоэлро, коминтерн, ниокр, эмэртэ.</Box>
+                <Box sx={style.infoItem}><Typography component={'span'}>Дней на орбите: </Typography>{days()}</Box>
+                <Box sx={style.infoItem}><Typography component={'span'}>Ключевые навыки: </Typography>джиэс, эйчтиэмэл, цеэсэс, нод джиэс, капээсэс, коминтерн, гоэлро, эмэртэ.</Box>
                 <Box sx={style.infoItem}>
-                <Typography>Позывные</Typography>
+                    <Typography>Позывные</Typography>
                     <Box>Телеграмм: adonaijehosua</Box>
-                    <Box>Телефон: 8 (992) 009-51-49</Box>
                     <Box>Почта: s.o.ragozin@gmail.com</Box>
                 </Box>
-                <Button sx={style.openButton} onClick={() => setPage('FullDossier')}>Открыть полное досье...</Button>
+                <Button size='small' sx={style.openButton} onClick={() => setPage('FullDossier')}>Открыть полное досье...</Button>
             </Grid>
         </>
     )
