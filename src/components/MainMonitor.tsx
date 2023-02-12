@@ -21,13 +21,15 @@ const style = {
         padding: '10px',
     },
     openButton: {
-        color: '#fff'
+        color: '#4AA329'
     },
     loadingText: {
-        color: '#fff',
+        color: '#3BDA00',
         fontFamily: 'monospace'
     },
     contentWrapper: {
+        overflow: 'auto',
+        flexWrap: 'nowrap',
         fontFamily: 'monospace',
         width: '100%',
         height: '100%',

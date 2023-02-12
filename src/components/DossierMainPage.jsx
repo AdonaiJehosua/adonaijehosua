@@ -5,10 +5,10 @@ import photo from '../images/authorPhoto.jpg'
 
 const style = {
     openButton: {
-        color: '#fff'
+        color: '#4AA329'
     },
     loadingText: {
-        color: '#fff',
+        color: '#3BDA00',
         fontFamily: 'monospace'
     },
     contentWrapper: {
@@ -18,10 +18,12 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        margin: 'auto'
+        margin: 'auto',
+        color: '#3BDA00'
     },
     information: {
-        border: '1px solid white',
+        color: '#3BDA00',
+        border: '1px solid #3BDA00',
         borderRadius: '5px',
         marginLeft: '10px',
         display: 'flex',
@@ -30,13 +32,13 @@ const style = {
     },
     photo: {
         width: '100%',
-        border: '1px solid white',
+        border: '1px solid #3BDA00',
         borderRadius: '5px'
     },
     infoItem: {
-        borderBottom: '1px solid white',
+        borderBottom: '1px solid #3BDA00',
         padding: '5px',
-        margin: '0 0 5px 5px'
+        margin: '0 5px 5px 5px'
     }
 }
 
