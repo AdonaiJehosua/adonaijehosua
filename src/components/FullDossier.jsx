@@ -1,57 +1,53 @@
 import Grid from '@mui/material/Grid'
 import { Button } from '@mui/material'
+import { Box } from "@mui/material"
 
 const style = {
-    monitor: {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '90vw',
-        height: '50vw',
-        border: '10px solid silver',
-        borderRadius: '15px',
-        backgroundColor: '#000',
-        boxShadow: 24,
-        p: 1,
+    item: {
     },
-    openButton: {
-        color: '#fff'
+    itemHeader: {
     },
-    loadingText: {
-        color: '#fff',
-        fontFamily: 'monospace'
+    itemContent: {
     },
     contentWrapper: {
+        overflow: 'auto',
+        flexWrap: 'nowrap',
         fontFamily: 'monospace',
         width: '100%',
         height: '100%',
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        margin: 'auto'
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        margin: 'auto',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
+        color: '#3BDA00'
     },
-    information: {
-        padding: '10px'
-    },
-    photo: {
-        width: '30%',
-        height: '80%',
-        backgroundColor: '#fff',
-    },
+    buttons: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'flex-end'
+    }
 }
 
-export function FullDossier ({setPage}) {
+export function FullDossier({ setPage }) {
     return (
-        <>
-            <Grid item xs={3} sx={style.photo}>
-            </Grid>
-            <Grid item container xs={7} style={style.information}>
-                <Grid item>
-                    Рагозин Сергей Олегович
+        <Grid container style={style.contentWrapper}>
+            <Grid item xs container>~
+                <Grid item container style={style.item}>
+                    <Grid item xs={4} style={style.itemHeader}>Фамилия</Grid>
+                    <Grid item xs={8} style={style.itemContent}>Рагозин</Grid>
+                    <Grid item xs={4} style={style.itemHeader}>Имя</Grid>
+                    <Grid item xs={8} style={style.itemContent}>Сергей</Grid>
+                    <Grid item xs={4} style={style.itemHeader}>Отчество</Grid>
+                    <Grid item xs={8} style={style.itemContent}>Олегович</Grid>
                 </Grid>
-                    <Button onClick={() => setPage('mainPage')}>Назад</Button>
             </Grid>
-        </>
+
+            <Grid item xs style={style.buttons}>
+                <Button onClick={() => setPage('mainPage')}>Назад</Button>
+            </Grid>
+        </Grid>
     )
 }

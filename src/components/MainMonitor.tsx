@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Box, Button, Modal } from "@mui/material";
+import { useState } from "react"
+import { Box, Button, Modal } from "@mui/material"
 import { TypeAnimation } from "react-type-animation"
 import Grid from '@mui/material/Grid'
-import { FullDossier } from "./FullDossier";
-import { DossierMainPage } from "./DossierMainPage";
+import { FullDossier } from "./FullDossier"
+import { DossierMainPage } from "./DossierMainPage"
 
 const style = {
     monitor: {
@@ -14,6 +14,7 @@ const style = {
         width: '90vw',
         height: '50vw',
         minWidth: '500px',
+        minHeight: '280px',
         border: '10px solid silver',
         borderRadius: '15px',
         backgroundColor: '#000',
@@ -36,7 +37,10 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'flex-start',
-        margin: 'auto'
+        margin: 'auto',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
     },
     information: {
         padding: '10px'
@@ -93,12 +97,8 @@ export const MainMonitor = () => {
                         deletionSpeed={80}
                         style={style.loadingText}
                     />}
-                    {(!loading && page === 'mainPage') && <Grid container sx={style.contentWrapper}>
-                        <DossierMainPage setPage={setPage}/>
-                    </Grid>}
-                    {(!loading && page === 'FullDossier') && <Grid container sx={style.contentWrapper}>
-                        <FullDossier setPage={setPage}/>
-                    </Grid>}
+                    {(!loading && page === 'mainPage') && <DossierMainPage setPage={setPage}/>}
+                    {(!loading && page === 'FullDossier') && <FullDossier setPage={setPage}/>}
                 </Box>
             </Modal>
         </>
