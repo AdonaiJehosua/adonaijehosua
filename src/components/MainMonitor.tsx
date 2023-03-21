@@ -12,6 +12,7 @@ const style = {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '90%',
+        maxWidth: '1280px',
         height: '90%',
         minWidth: '500px',
         minHeight: '280px',
