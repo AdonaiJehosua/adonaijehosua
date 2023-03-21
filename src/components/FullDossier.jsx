@@ -21,7 +21,7 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         borderBottom: '1px solid #3BDA00',
-        marginBottom: '1px'
+        marginBottom: '5px'
     },
     contentWrapper: {
         overflow: 'auto',
@@ -36,7 +36,10 @@ const style = {
         '&::-webkit-scrollbar': {
             display: 'none'
         },
-        color: '#3BDA00'
+        color: '#3BDA00',
+        border: '1px solid #3BDA00',
+        borderRadius: '5px',
+        padding: '10px'
     },
     chracter: {
         display: 'flex',
