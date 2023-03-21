@@ -1,13 +1,27 @@
-import Grid from '@mui/material/Grid'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Box } from "@mui/material"
 
 const style = {
     item: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        padding: '0 10px'
     },
     itemHeader: {
+        fontSize: '16px',
+        lineHeight: '24px',
+        minWidth: '80px'
     },
     itemContent: {
+        fontSize: '18px',
+        lineHeight: '24px'
+    },
+    itemsWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        borderBottom: '1px solid #3BDA00',
+        marginBottom: '1px'
     },
     contentWrapper: {
         overflow: 'auto',
@@ -24,6 +38,10 @@ const style = {
         },
         color: '#3BDA00'
     },
+    chracter: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
     buttons: {
         width: '100%',
         display: 'flex',
@@ -33,21 +51,43 @@ const style = {
 
 export function FullDossier({ setPage }) {
     return (
-        <Grid container style={style.contentWrapper}>
-            <Grid item xs container>~
-                <Grid item container style={style.item}>
-                    <Grid item xs={4} style={style.itemHeader}>Фамилия</Grid>
-                    <Grid item xs={8} style={style.itemContent}>Рагозин</Grid>
-                    <Grid item xs={4} style={style.itemHeader}>Имя</Grid>
-                    <Grid item xs={8} style={style.itemContent}>Сергей</Grid>
-                    <Grid item xs={4} style={style.itemHeader}>Отчество</Grid>
-                    <Grid item xs={8} style={style.itemContent}>Олегович</Grid>
-                </Grid>
-            </Grid>
+        <Box style={style.contentWrapper}>
+            <Box sx={style.chracter}>
+                <Box sx={style.itemsWrapper}>
+                    <Box style={style.item}>
+                        <Box style={style.itemHeader}>Звание</Box>
+                    </Box>
+                    <Box style={style.item}>
+                        <Box sx={{...style.itemContent, fontSize: '20px'}} >Капитан</Box>
+                    </Box>
+                </Box>
+                <Box sx={style.itemsWrapper}>
+                    <Box style={style.item}>
+                        <Box style={style.itemHeader}>Фамилия</Box>
+                        <Box style={style.itemHeader}>Имя</Box>
+                        <Box style={style.itemHeader}>Отчество</Box>
+                    </Box>
+                    <Box style={style.item}>
+                        <Box style={style.itemContent}>Рагозин</Box>
+                        <Box style={style.itemContent}>Сергей</Box>
+                        <Box style={style.itemContent}>Олегович</Box>
+                    </Box>
+                </Box>
+                <Box sx={style.itemsWrapper}>
+                    <Box style={style.item}>
+                        <Box style={style.itemHeader}>Краткое жизнеописание</Box>
+                    </Box>
+                    <Box style={style.item}>
+                        <Box style={style.itemContent}>
+                            <Typography>Где бы точно не захотели сейчас оказаться, так это в Париже🤷‍♂️ Ночные протесты плавно перетекли в утренние. Ночью проводили время французы весело — жгли очередное "чучело" Макрона, сжигали на своем пути мусорные баки, велосипеды, машины. Пожарные не всегда успевают и не всегда физически могут добраться до пожаров сквозь толпы. Были задержаны почти 300 человек. Митингующие выступают под общим лозунгом "Это война", вот и полиция уже не церемонится — "гасит" всех, кто попадётся под руку. Война так война. Как заявил лидер французских левых Жан-Люк Меланшон, "Пришло время перейти к власти народа!". Ну так себе "власть народа" пока что🤨</Typography>
+                        </Box>
+                    </Box>
+                </Box>
 
-            <Grid item xs style={style.buttons}>
-                <Button onClick={() => setPage('mainPage')}>Назад</Button>
-            </Grid>
-        </Grid>
+                <Box style={style.buttons}>
+                    <Button onClick={() => setPage('mainPage')}>Назад</Button>
+                </Box>
+            </Box>
+        </Box>
     )
 }
