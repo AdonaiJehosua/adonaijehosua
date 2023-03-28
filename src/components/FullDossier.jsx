@@ -11,7 +11,7 @@ const style = {
     itemHeader: {
         fontSize: '16px',
         lineHeight: '24px',
-        minWidth: '80px'
+        minWidth: '125px'
     },
     itemContent: {
         fontSize: '18px',
@@ -21,7 +21,7 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         borderBottom: '1px solid #3BDA00',
-        marginBottom: '5px'
+        marginBottom: '10px'
     },
     contentWrapper: {
         overflow: 'auto',
@@ -78,7 +78,7 @@ export function FullDossier({ setPage }) {
                 </Box>
                 <Box sx={style.itemsWrapper}>
                     <Box style={style.item}>
-                        <Box style={style.itemHeader}>Краткое жизнеописание</Box>
+                        <Box style={style.itemHeader}>Характеристика</Box>
                     </Box>
                     <Box style={style.item}>
                         <Box style={style.itemContent}>
