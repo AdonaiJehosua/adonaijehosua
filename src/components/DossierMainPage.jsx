@@ -21,7 +21,7 @@ const style = {
         marginLeft: '10px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
     },
     photo: {
         width: '100%',
@@ -30,8 +30,8 @@ const style = {
     },
     infoItem: {
         borderBottom: '1px solid #3BDA00',
-        padding: '5px',
-        margin: '0 5px 5px 5px'
+        padding: '5px 0',
+        margin: '0 5px 5px 10px'
     },
     contentWrapper: {
         overflow: 'auto',
