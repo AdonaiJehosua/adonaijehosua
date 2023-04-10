@@ -6,6 +6,7 @@ import cosmonavt from '../images/cosmonavt.png'
 import ship from '../images/body.svg'
 import { keyframes } from '@emotion/react'
 import { MainMonitor } from '@/components/MainMonitor'
+import { PrivatMonitor } from '@/components/PrivatMonitor'
 
 const rotateCosmos = keyframes`
   from { 
@@ -88,6 +89,21 @@ const style = {
       animation: `${monitor1} 0.2s linear forwards`,
     }
   },
+  monitor2: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirections: 'column',
+    justifyContent: 'center',
+    width: '90px',
+    height: '50px',
+    backgroundColor: '#000',
+    position: 'relative',
+    top: '477px',
+    left: '85px',
+    border: '3px solid silver',
+    borderRadius: '5px',
+    animationFillMode: 'forward',
+  },
   cosmonavt: {
     backgroundImage: `url(${cosmonavt.src})`,
     backgroundSize: 'contain',
@@ -117,6 +133,9 @@ export default function Home() {
             <Box sx={style.cosmonavt}></Box>
             <Box sx={style.monitor1}>
               <MainMonitor/>
+            </Box>
+            <Box sx={style.monitor2}>
+              <PrivatMonitor/>
             </Box>
           </Box>
         </Box>

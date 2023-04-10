@@ -19,6 +19,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/DossierMainPage.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/DossierMainPage.jsx", "src/components/PrivatMonitor.jsx"],
   "exclude": ["node_modules"]
 }
