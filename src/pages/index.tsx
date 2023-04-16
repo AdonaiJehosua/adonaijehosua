@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
 import Head from 'next/head'
-import Image from 'next/image'
 import cosmos from '../images/tengyart-lmrslsreZ2E-unsplash.jpg'
 import cosmonavt from '../images/cosmonavt.png'
 import ship from '../images/body.svg'
@@ -130,7 +129,8 @@ export default function Home() {
         <Box sx={style.cosmos}></Box>
         <Box sx={style.itemsWrapper}>
           <Box sx={style.ship}>
-            <Box sx={style.cosmonavt}></Box>
+            
+            <Box sx={style.cosmonavt}/>
             <Box sx={style.monitor1}>
               <MainMonitor/>
             </Box>

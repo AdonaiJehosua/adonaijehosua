@@ -7,36 +7,36 @@ const style = {
     startMenu: {
         backgroundColor: '#120F14',
         borderRadius: '0 0 5px 5px',
-        height: '26px',
+        height: '3vw',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        boxShadow: 'inset 2px 3px 6px 3px #2c2430',
-        padding: '3px'
+        padding: '5px 0'
     },
     startButton: {
         backgroundColor: '#120F14',
-        padding: '2px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: '10px',
-        boxShadow: 'inset 3px -1px 6px 2px #2c2430',
         transition: 'box-shadow 0.5s',
-        width: '20px',
-        height: '20px',
+        width: '3vw',
+        height: '3vw',
+        borderRadius: '0 0 0 5px',
         '&:hover': {
             boxShadow: 'inset 0px 0px 11px 4px #2c2430',
         }
     },
     startMenuIcon: {
-        fontSize: '12px'
+        fontSize: '1.5vw',
+        color: '#fff'
     },
     dateTimeContainer: {
-        fontSize: '6px',
+        fontSize: '10px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginRight: '10px',
+        color: '#fff'
     },
     taskBar: {
         flexGrow: 5

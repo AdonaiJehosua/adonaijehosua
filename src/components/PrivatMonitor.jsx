@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Box, Button, Modal } from "@mui/material"
 import { StartMenu } from "./StartMenu"
-import FolderIcon from '@mui/icons-material/Folder'
+import { ExampleDir } from './directories/ExampleDir'
 
 const style = {
     monitor: {
@@ -47,8 +47,12 @@ const style = {
         padding: '10px'
     },
     desktop: {
+        borderRadius: '5px 5px 0 0',
+        backgroundColor: 'red',
         height: '100%',
-        padding: '5px'
+        width: '100%',
+        padding: '5px',
+        position: 'relative'
     }
 }
 
@@ -75,10 +79,12 @@ export const PrivatMonitor = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style.monitor}>
-                    <Box sx={style.desktop}>
-                        <FolderIcon />
+
+                    <Box sx={style.desktop} id={'desktop'}>
+                    <ExampleDir/>
+                    <ExampleDir/>
                     </Box>
-                    <StartMenu/>
+                    <StartMenu />
                 </Box>
             </Modal>
         </>
