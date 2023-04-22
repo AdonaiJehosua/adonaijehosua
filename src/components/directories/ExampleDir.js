@@ -55,7 +55,7 @@ export const ExampleDir = () => {
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
-                    sx={{width: '100px', height: '100px', position: 'absolute'}}
+                    sx={{width: '100px', height: '100px'}}
                     container={() => {if (typeof window !== 'undefined') {return document.getElementById('desktop')}}}
                 >
                     <Box sx={{ width: '100px', height: '100px', border: '1px solid black', backgroundColor: '#fff' }}>

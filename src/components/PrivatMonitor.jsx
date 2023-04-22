@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Box, Button, Modal } from "@mui/material"
 import { StartMenu } from "./StartMenu"
 import { ExampleDir } from './directories/ExampleDir'
+import { Directory } from './directories/Directory'
 
 const style = {
     monitor: {
@@ -77,12 +78,13 @@ export const PrivatMonitor = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableScrollLock={true}
             >
                 <Box sx={style.monitor}>
 
                     <Box sx={style.desktop} id={'desktop'}>
                     <ExampleDir/>
-                    <ExampleDir/>
+                    <Directory dirName={'Other'}/>
                     </Box>
                     <StartMenu />
                 </Box>
