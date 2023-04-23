@@ -59,9 +59,6 @@ const style = {
 
 export const PrivatMonitor = () => {
 
-    const [page, setPage] = useState('mainPage')
-
-
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true)

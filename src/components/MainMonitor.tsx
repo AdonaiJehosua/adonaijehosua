@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { Box, Button, Modal } from "@mui/material"
 import { TypeAnimation } from "react-type-animation"
-import Grid from '@mui/material/Grid'
 import { FullDossier } from "./FullDossier"
 import { DossierMainPage } from "./DossierMainPage"
 
