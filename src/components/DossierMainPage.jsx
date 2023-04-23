@@ -43,7 +43,7 @@ const style = {
         flexDirection: 'row',
         alignItems: 'flex-start',
         margin: 'auto',
-        '&::-webkit-scrollbar': {
+        '&::WebkitScrollbar': {
             display: 'none'
         }
     }
