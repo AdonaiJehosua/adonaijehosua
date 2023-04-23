@@ -43,15 +43,14 @@ const style = {
         color: '#3BDA00',
         border: '1px solid #3BDA00',
         borderRadius: '5px',
-        padding: '10px'
+        padding: '10px',
+        "&::-webkit-scrollbar": {
+            display: 'none'
+        },
     },
     chracter: {
         display: 'flex',
         flexDirection: 'column',
-        '&::WebkitScrollbar': {
-            width: '50px',
-            display: 'none',
-        },
     },
     buttons: {
         width: '100%',
@@ -65,12 +64,16 @@ const style = {
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
+    },
+    slideContent: {
+        backgroundColor: '#3BDA004D',
+        height: '100%'
     }
 }
 
 export function FullDossier({ setPage }) {
     return (
-        <Box style={style.contentWrapper}>
+        <Box sx={style.contentWrapper}>
             <Box sx={style.chracter}>
                 <Box sx={style.itemsWrapper}>
                     <Box style={style.item}>
@@ -115,7 +118,9 @@ export function FullDossier({ setPage }) {
                                 <Slider>
                                     <Slide>
                                         <Box sx={{ ...style.slideImage, backgroundImage: `url(${firstImg.src})` }}>
-                                            <Typography>Высшее</Typography>
+                                            <Box sx={style.slideContent}>
+                                                <Typography>Высшее</Typography>
+                                            </Box>
                                         </Box>
                                     </Slide>
                                     <Slide><Box sx={{ ...style.slideImage, backgroundImage: `url(${secondImg.src})` }}>
