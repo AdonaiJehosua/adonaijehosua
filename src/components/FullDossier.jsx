@@ -3,7 +3,7 @@ import { Button, Typography } from '@mui/material'
 import { Box } from "@mui/material"
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
-import firstImg from '../images/docs/UrFU.png'
+import firstImg from '../images/docs/EVMarc.png'
 import secondImg from '../images/docs/Innopolis.png'
 import thirdImg from '../images/docs/ITMO.png'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
@@ -75,7 +75,7 @@ const style = {
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'top',
+        alignItems: 'center',
         justifyContent: 'center'
     },
     slideButton: {
@@ -85,6 +85,14 @@ const style = {
         border: '0',
         height: '100%',
         width: '12%'
+    },
+    slideTitle: {
+        color: '#3BDA00',
+        // fontSize: '1.5rem',
+        backgroundColor: 'black',
+        padding: '0 7px',
+        textAlign: 'center'
+        // textShadow: '0px 0px 2px #3BDA00',
     }
 }
 
@@ -132,25 +140,33 @@ export function FullDossier({ setPage }) {
                                 naturalSlideWidth={100}
                                 naturalSlideHeight={50}
                                 totalSlides={3}
-                                style={{position: 'relative'}}
-                                >
+                                style={{ position: 'relative' }}
+                            >
                                 <Slider>
                                     <Slide>
-                                        <Box sx={{ ...style.slideImage, backgroundImage: `url(${firstImg.src})` }}>
+                                        <Box sx={{ ...style.slideImage, backgroundImage: `url(${secondImg.src})` }}>
                                             <Box sx={style.slideContent}>
-                                                <Typography>Высшее</Typography>
+                                                <Typography sx={style.slideTitle}>Переподготовка<br/>Университет Иннополис</Typography>
                                             </Box>
                                         </Box>
                                     </Slide>
-                                    <Slide><Box sx={{ ...style.slideImage, backgroundImage: `url(${secondImg.src})` }}>
-                                        <Typography>Переподготовка</Typography>
-                                    </Box></Slide>
-                                    <Slide><Box sx={{ ...style.slideImage, backgroundImage: `url(${thirdImg.src})` }}>
-                                        <Typography>Повышение квалификации</Typography>
-                                    </Box></Slide>
+                                    <Slide>
+                                        <Box sx={{ ...style.slideImage, backgroundImage: `url(${thirdImg.src})` }}>
+                                            <Box sx={style.slideContent}>
+                                                <Typography sx={style.slideTitle}>Повышение квалификации</Typography>
+                                            </Box>
+                                        </Box>
+                                    </Slide>
+                                    <Slide>
+                                        <Box sx={{ ...style.slideImage, backgroundImage: `url(${firstImg.src})` }}>
+                                            <Box sx={style.slideContent}>
+                                                <Typography sx={style.slideTitle}>Архитектура ЭВМ</Typography>
+                                            </Box>
+                                        </Box>
+                                    </Slide>
                                 </Slider>
-                                <ButtonBack style={{...style.slideButton}}><ArrowBackIosIcon/></ButtonBack>
-                                <ButtonNext style={{...style.slideButton, right: '0%'}}><ArrowForwardIosIcon/></ButtonNext>
+                                <ButtonBack style={{ ...style.slideButton }}><ArrowBackIosIcon /></ButtonBack>
+                                <ButtonNext style={{ ...style.slideButton, right: '0%' }}><ArrowForwardIosIcon /></ButtonNext>
                             </CarouselProvider>
                         </Box>
                     </Box>
