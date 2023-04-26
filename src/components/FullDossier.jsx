@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button, Typography } from '@mui/material'
 import { Box } from "@mui/material"
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
@@ -5,6 +6,9 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 import firstImg from '../images/docs/UrFU.png'
 import secondImg from '../images/docs/Innopolis.png'
 import thirdImg from '../images/docs/ITMO.png'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+
 
 
 const style = {
@@ -28,7 +32,8 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         borderBottom: '1px solid #3BDA00',
-        marginBottom: '10px'
+        marginBottom: '10px',
+        paddingBottom: '10px'
     },
     contentWrapper: {
         overflow: 'auto',
@@ -66,8 +71,20 @@ const style = {
         backgroundPosition: 'center',
     },
     slideContent: {
-        backgroundColor: '#3BDA004D',
-        height: '100%'
+        backgroundColor: '#3BDA0040',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'top',
+        justifyContent: 'center'
+    },
+    slideButton: {
+        position: 'absolute',
+        top: '0%',
+        backgroundColor: '#ffffff00',
+        border: '0',
+        height: '100%',
+        width: '12%'
     }
 }
 
@@ -114,7 +131,9 @@ export function FullDossier({ setPage }) {
                             <CarouselProvider
                                 naturalSlideWidth={100}
                                 naturalSlideHeight={50}
-                                totalSlides={3}>
+                                totalSlides={3}
+                                style={{position: 'relative'}}
+                                >
                                 <Slider>
                                     <Slide>
                                         <Box sx={{ ...style.slideImage, backgroundImage: `url(${firstImg.src})` }}>
@@ -130,8 +149,8 @@ export function FullDossier({ setPage }) {
                                         <Typography>Повышение квалификации</Typography>
                                     </Box></Slide>
                                 </Slider>
-                                <ButtonBack>Back</ButtonBack>
-                                <ButtonNext>Next</ButtonNext>
+                                <ButtonBack style={{...style.slideButton}}><ArrowBackIosIcon/></ButtonBack>
+                                <ButtonNext style={{...style.slideButton, right: '0%'}}><ArrowForwardIosIcon/></ButtonNext>
                             </CarouselProvider>
                         </Box>
                     </Box>
