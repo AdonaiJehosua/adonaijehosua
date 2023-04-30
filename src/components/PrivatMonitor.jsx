@@ -3,6 +3,7 @@ import { Box, Button, Modal } from "@mui/material"
 import { StartMenu } from "./StartMenu"
 import { ExampleDir } from './directories/ExampleDir'
 import { Directory } from './directories/Directory'
+import desktopImage from '../images/fone/11.webp'
 
 const style = {
     monitor: {
@@ -48,8 +49,11 @@ const style = {
         padding: '10px'
     },
     desktop: {
-        borderRadius: '5px 5px 0 0',
-        backgroundColor: 'red',
+        // borderRadius: '5px 5px 0 0',
+        backgroundImage: `url(${desktopImage.src})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         height: '100%',
         width: '100%',
         padding: '5px',

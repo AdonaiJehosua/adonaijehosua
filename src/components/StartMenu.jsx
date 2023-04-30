@@ -6,7 +6,7 @@ import { useState } from "react"
 const style = {
     startMenu: {
         backgroundColor: '#120F14',
-        borderRadius: '0 0 5px 5px',
+        // borderRadius: '0 0 5px 5px',
         height: '3vw',
         display: 'flex',
         flexDirection: 'row',
