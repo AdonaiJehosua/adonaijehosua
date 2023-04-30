@@ -88,11 +88,9 @@ const style = {
     },
     slideTitle: {
         color: '#3BDA00',
-        // fontSize: '1.5rem',
         backgroundColor: 'black',
         padding: '0 7px',
         textAlign: 'center'
-        // textShadow: '0px 0px 2px #3BDA00',
     }
 }
 
