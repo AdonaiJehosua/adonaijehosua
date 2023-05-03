@@ -1,14 +1,12 @@
+import { Box, Button, List, ListItemButton, Modal, Typography } from "@mui/material"
+import { Functional1 } from "./functional1"
 import Draggable from "react-draggable"
-import FolderSharpIcon from '@mui/icons-material/FolderSharp';
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Button, Modal, Typography } from "@mui/material"
 import { useState } from "react"
-
 
 const style = {
     frame: {
         width: '5vw',
-        margin: '5px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -29,7 +27,7 @@ const style = {
         fontSize: '1vw',
         wordBreak: 'break-all',
         margin: '0 2px',
-        color: '#fff'
+        color: '#000000'
     },
     openedDir: {
         height: '100%',
@@ -37,14 +35,13 @@ const style = {
         border: '1px solid #000000'
     },
     openedDirBackground: {
-        width: '50%',
-        height: '60%',
+        width: '100%',
+        height: '100%',
         position: 'absolute',
-        top: '30%',
-        left: '25%'
+
     },
     opDirHead: {
-        height: '10%',
+        height: '7%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -71,7 +68,8 @@ const style = {
     }
 }
 
-export const Directory = ({ dirName, DirContent }) => {
+
+function FuncItem({ fileName, ItemContent }) {
 
     const [open, setOpen] = useState(false);
 
@@ -84,13 +82,9 @@ export const Directory = ({ dirName, DirContent }) => {
 
     return (
         <>
-            <Draggable bounds='parent'>
-                <Box sx={style.frame} onDoubleClick={handleOpen}>
-                    <FolderSharpIcon sx={style.dirIcon} />
-                    <Typography sx={style.dirName}>{dirName}</Typography>
-                </Box>
-            </Draggable>
-            <Draggable bounds='parent'>
+            <Box sx={style.frame} onDoubleClick={handleOpen}>
+                <Typography sx={style.dirName}>{fileName}</Typography>
+            </Box>
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -104,18 +98,26 @@ export const Directory = ({ dirName, DirContent }) => {
                     <Box sx={style.openedDir}>
                         <Box sx={style.opDirHead}>
                             <Typography sx={style.opDirHeadTitle}>
-                                {dirName}
+                                {fileName}
                             </Typography>
                             <Box sx={style.opDirHeadButtons}>
-                                <Button onClick={handleClose} sx={style.opDirHeadButton}><CloseIcon/></Button>
+                                <Button onClick={handleClose} sx={style.opDirHeadButton}><CloseIcon /></Button>
                             </Box>
                         </Box>
                         <Box sx={style.dirContent}>
-                            {DirContent}
+                            {ItemContent}
                         </Box>
                     </Box>
                 </Modal>
-            </Draggable>
         </>
+    )
+}
+
+
+export function FunctionalContent() {
+    return (
+        <Box>
+            <FuncItem fileName={'Функция1'} ItemContent=<Functional1 /> />
+        </Box>
     )
 }

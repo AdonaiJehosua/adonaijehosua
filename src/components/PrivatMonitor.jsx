@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { Box, Button, Modal } from "@mui/material"
 import { StartMenu } from "./StartMenu"
-import { ExampleDir } from './directories/ExampleDir'
 import { Directory } from './directories/Directory'
+import { FunctionalContent } from './directories/functionalProg/FunctionalContent'
+import { CssContent } from './directories/cssExamples/CssContent'
+import { Functional1 } from './directories/functionalProg/func1/Functional1'
 import desktopImage from '../images/fone/11.webp'
 
 const style = {
@@ -49,16 +51,23 @@ const style = {
         padding: '10px'
     },
     desktop: {
-        // borderRadius: '5px 5px 0 0',
         backgroundImage: `url(${desktopImage.src})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         height: '100%',
         width: '100%',
-        padding: '5px',
+        // padding: '5px',
         position: 'relative'
     }
+}
+
+const SomeComponent = () => {
+    return (
+        <Box>
+            Some Content
+        </Box>
+    )
 }
 
 export const PrivatMonitor = () => {
@@ -82,10 +91,10 @@ export const PrivatMonitor = () => {
                 disableScrollLock={true}
             >
                 <Box sx={style.monitor}>
-
                     <Box sx={style.desktop} id={'desktop'}>
-                    <ExampleDir/>
-                    <Directory dirName={'Other'}/>
+                        <Directory dirName={'FP'} DirContent=<FunctionalContent /> />
+                        <Directory dirName={'CSS'} DirContent=<CssContent /> />
+                        <Directory dirName={'typescript'} />
                     </Box>
                     <StartMenu />
                 </Box>

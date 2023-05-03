@@ -50,18 +50,11 @@ const style = {
 }
 
 const days = () => {
-    const d0 = new Date(2020, 10, 15);
+    const d0 = new Date(2021, 10, 15);
     const d1 = new Date();
     const dt = (d1.getTime() - d0.getTime()) / (1000 * 60 * 60 * 24)
     return Math.floor(dt)
 }
-const age = () => {
-    const d0 = new Date(1993, 11, 18);
-    const d1 = new Date();
-    const dt = (d1.getTime() - d0.getTime()) / (1000 * 60 * 60 * 24 * 365)
-    return Math.floor(dt)
-}
-
 
 export function DossierMainPage({ setPage }) {
     return (
