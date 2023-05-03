@@ -152,14 +152,14 @@ export function FullDossier({ setPage }) {
                                     <Slide>
                                         <Box sx={{ ...style.slideImage, backgroundImage: `url(${secondImg.src})` }}>
                                             <Box sx={style.slideContent}>
-                                                <Typography sx={style.slideTitle}>Переподготовка<br/>Университет Иннополис</Typography>
+                                                <Typography sx={style.slideTitle}>Переподготовка<br/>Университет Иннополис<br/>Младший frontend-разработчик</Typography>
                                             </Box>
                                         </Box>
                                     </Slide>
                                     <Slide>
                                         <Box sx={{ ...style.slideImage, backgroundImage: `url(${thirdImg.src})` }}>
                                             <Box sx={style.slideContent}>
-                                                <Typography sx={style.slideTitle}>Повышение квалификации</Typography>
+                                                <Typography sx={style.slideTitle}>Повышение квалификации<br/>Университет ИТМО<br/>Специалист по большим данным</Typography>
                                             </Box>
                                         </Box>
                                     </Slide>
