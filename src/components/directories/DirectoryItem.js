@@ -45,7 +45,7 @@ const style = {
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'black',
-        padding: '0 0 0 5px',
+        padding: '0 5px',
     },
     opDirHeadTitle: {
         fontSize: '1.5vw',
@@ -56,7 +56,7 @@ const style = {
         justifyContent: 'right',
         color: '#fff',
         padding: '0',
-        width: '24px',
+        minWidth: '0',
         '&:hover': {
             backgroundColor: 'red',
         },
