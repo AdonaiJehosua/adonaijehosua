@@ -62,7 +62,10 @@ const style = {
         },
     },
     dirContent: {
-        color: 'black'
+        color: 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 }
 
@@ -83,30 +86,30 @@ export function DirectoryItem({ fileName, ItemContent }) {
             <Box sx={style.frame} onDoubleClick={handleOpen}>
                 <Typography sx={style.dirName}>{fileName}</Typography>
             </Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                    disableScrollLock={true}
-                    hideBackdrop={true}
-                    sx={style.openedDirBackground}
-                    container={() => { if (typeof window !== 'undefined') { return document.getElementById('desktop') } }}
-                >
-                    <Box sx={style.openedDir}>
-                        <Box sx={style.opDirHead}>
-                            <Typography sx={style.opDirHeadTitle}>
-                                {fileName}
-                            </Typography>
-                            <Box sx={style.opDirHeadButtons}>
-                                <Button onClick={handleClose} sx={style.opDirHeadButton}><CloseIcon /></Button>
-                            </Box>
-                        </Box>
-                        <Box sx={style.dirContent}>
-                            {ItemContent}
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                disableScrollLock={true}
+                hideBackdrop={true}
+                sx={style.openedDirBackground}
+                container={() => { if (typeof window !== 'undefined') { return document.getElementById('desktop') } }}
+            >
+                <Box sx={style.openedDir}>
+                    <Box sx={style.opDirHead}>
+                        <Typography sx={style.opDirHeadTitle}>
+                            {fileName}
+                        </Typography>
+                        <Box sx={style.opDirHeadButtons}>
+                            <Button onClick={handleClose} sx={style.opDirHeadButton}><CloseIcon /></Button>
                         </Box>
                     </Box>
-                </Modal>
+                    <Box sx={style.dirContent}>
+                        {ItemContent}
+                    </Box>
+                </Box>
+            </Modal>
         </>
     )
 }

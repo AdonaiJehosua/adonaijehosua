@@ -3,6 +3,7 @@ import { Box, Button, Modal } from "@mui/material"
 import { StartMenu } from "./StartMenu"
 import { Directory } from './directories/Directory'
 import { FunctionalContent } from './directories/functionalProg/FunctionalContent'
+import { ReduxContent } from './directories/redux/ReduxContent'
 import { CssContent } from './directories/cssExamples/CssContent'
 import { Functional1 } from './directories/functionalProg/func1/Functional1'
 import desktopImage from '../images/fone/11.webp'
@@ -95,6 +96,7 @@ export const PrivatMonitor = () => {
                         <Directory dirName={'FP'} DirContent=<FunctionalContent /> />
                         <Directory dirName={'CSS'} DirContent=<CssContent /> />
                         <Directory dirName={'typescript'} />
+                        <Directory dirName={'Redux'} DirContent=<ReduxContent />/>
                     </Box>
                     <StartMenu />
                 </Box>
