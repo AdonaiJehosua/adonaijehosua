@@ -1,18 +1,15 @@
 import { Box, Button, Modal, Typography } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close'
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
 import { useState } from "react"
 
 const style = {
     frame: {
-        width: '5vw',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'start',
         justifyContent: 'center',
         flexDirection: 'column',
-        '&:hover': {
-            backgroundColor: '#000000CC',
-        },
-        textShadow: '0px 0px 2px black',
+        margin: '5px'
     },
     iconWrapper: {
         width: '5.1vw',
@@ -21,11 +18,19 @@ const style = {
         fontSize: '3vw',
         color: '#FFEB73',
     },
-    dirName: {
+    fileName: {
         fontSize: '1vw',
         wordBreak: 'break-all',
         margin: '0 2px',
-        color: '#000000'
+        color: '#000000',
+        display: 'flex',
+        alignItems: 'start',
+        justifyContent: 'bottom',
+        flexDirection: 'row',
+        '&:hover': {
+            backgroundColor: '#00000080',
+        },
+        padding: '5px'
     },
     openedDir: {
         height: '100%',
@@ -84,7 +89,7 @@ export function DirectoryItem({ fileName, ItemContent }) {
     return (
         <>
             <Box sx={style.frame} onDoubleClick={handleOpen}>
-                <Typography sx={style.dirName}>{fileName}</Typography>
+                <Typography sx={style.fileName}><InsertDriveFileIcon sx={{fontSize: '1.5vw'}}/>{fileName}</Typography>
             </Box>
             <Modal
                 open={open}
