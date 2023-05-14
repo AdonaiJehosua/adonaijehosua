@@ -35,7 +35,11 @@ const style = {
     openedDir: {
         height: '100%',
         backgroundColor: '#fff',
-        border: '1px solid #000000'
+        border: '1px solid #000000',
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
     },
     openedDirBackground: {
         width: '100%',
@@ -70,7 +74,7 @@ const style = {
         color: 'black',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 }
 

@@ -34,14 +34,16 @@ const style = {
     openedDir: {
         height: '100%',
         backgroundColor: '#fff',
-        border: '1px solid #000000'
+        border: '1px solid #000000',
+        
     },
     openedDirBackground: {
         width: '50%',
         height: '60%',
         position: 'absolute',
         top: '30%',
-        left: '25%'
+        left: '25%',
+        
     },
     opDirHead: {
         height: '10%',
@@ -67,7 +69,11 @@ const style = {
         },
     },
     dirContent: {
-        color: 'black'
+        color: 'black',
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
     }
 }
 
