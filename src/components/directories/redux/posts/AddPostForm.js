@@ -55,6 +55,8 @@ export const AddPostForm = () => {
         }
     }
 
+    const cantSave = Boolean(title) && Boolean(content) && Boolean(userId)
+
     const renderUsers = users.map(user => (
         <MenuItem key={user.id} sx={style.postWrapper} value={user.id}>
             {user.name}
@@ -87,6 +89,7 @@ export const AddPostForm = () => {
                 <Button sx={style.addButton}
                     variant='contained'
                     onClick={onSavePostClicked}
+                    disabled={!cantSave}
                 >Добавить</Button>
             </Box>
         </Box>

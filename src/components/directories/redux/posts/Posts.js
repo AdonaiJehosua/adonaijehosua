@@ -2,6 +2,9 @@ import { Box, Divider, Typography } from "@mui/material"
 import { useSelector } from 'react-redux'
 import { selectAllPosts } from './postsSlice'
 import { AddPostForm } from './AddPostForm'
+import { PostsAuthor } from './PostsAuthor'
+import { TimeAgo } from './TimeAgo'
+import { ReactionButtons } from './ReactionButtons'
 
 const style = {
     wrapper: {
@@ -36,10 +39,15 @@ export function Posts () {
 
     const posts = useSelector(selectAllPosts)
 
-    const renderPosts = posts.map(post => (
+    const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
+
+    const renderPosts = orderedPosts.map(post => (
         <Box key={post.id} sx={style.postWrapper}>
             <Typography variant="h5" sx={style.postTitle}>{post.title}</Typography>
             <Box sx={style.postContent}>{post.content.substring(0, 100)}</Box>
+            <PostsAuthor userId={post.userId}/>
+            <TimeAgo timestamp={post.date} />
+            <ReactionButtons post={post} />
         </Box>
     ))
 
