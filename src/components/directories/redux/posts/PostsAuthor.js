@@ -9,6 +9,6 @@ export const PostsAuthor = ({userId}) => {
     const author = users.find(user => user.id === userId)
 
   return (
-    <Typography>от {author ? author.name : 'Неизвестный автор'}</Typography>
+    <span style={{fontSize: '12px'}}>от {author ? author.name : 'Неизвестный автор'}</span>
   )
 }

@@ -35,7 +35,7 @@ const style = {
 
 }
 
-export function Posts () {
+export function Posts() {
 
     const posts = useSelector(selectAllPosts)
 
@@ -45,8 +45,10 @@ export function Posts () {
         <Box key={post.id} sx={style.postWrapper}>
             <Typography variant="h5" sx={style.postTitle}>{post.title}</Typography>
             <Box sx={style.postContent}>{post.content.substring(0, 100)}</Box>
-            <PostsAuthor userId={post.userId}/>
-            <TimeAgo timestamp={post.date} />
+            <Box sx={{ margin: '5px 0' }}>
+                <PostsAuthor userId={post.userId} />
+                <TimeAgo timestamp={post.date} />
+            </Box>
             <ReactionButtons post={post} />
         </Box>
     ))
@@ -54,7 +56,7 @@ export function Posts () {
 
     return (
         <Box sx={style.wrapper}>
-            <AddPostForm/>
+            <AddPostForm />
             <Typography sx={style.title} variant="h3" >Посты</Typography>
             {renderPosts}
         </Box>

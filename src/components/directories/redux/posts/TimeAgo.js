@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material"
 import { parseISO, formatDistanceToNow } from "date-fns"
 
 import React from 'react'
@@ -14,8 +13,8 @@ export const TimeAgo = ({timestamp}) => {
 
 
   return (
-    <Typography>
+    <span style={{fontSize: '10px'}}>
         &nbsp; <i>{timeAgo}</i>
-    </Typography>
+    </span>
   )
 }
