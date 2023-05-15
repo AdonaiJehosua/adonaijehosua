@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography, Select, MenuItem, InputLabel } from '@mui/material'
+import { Box, Button, TextField, Typography, Select, MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -48,7 +48,6 @@ export const AddPostForm = () => {
             dispatch(
                 postAdded(title, content, userId)
             )
-            console.log(title, content, userId)
             setTitle('')
             setContent('')
             setUserId('')

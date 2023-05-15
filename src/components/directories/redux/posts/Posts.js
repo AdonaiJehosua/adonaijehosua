@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { useSelector } from 'react-redux'
 import { selectAllPosts } from './postsSlice'
 import { AddPostForm } from './AddPostForm'

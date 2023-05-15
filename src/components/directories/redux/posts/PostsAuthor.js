@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { selectAllUsers } from './usersSlice'
 
