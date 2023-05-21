@@ -1,10 +1,10 @@
-import { Box, Typography } from "@mui/material"
-import { useSelector } from 'react-redux'
-import { selectAllAsyncPosts } from './asyncPostsSlice'
+import { Box, LinearProgress, Typography } from "@mui/material"
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from "react"
+import { selectAllAsyncPosts, getAsyncPostsStatus, getAsyncPostsError, fetchPosts } from './asyncPostsSlice'
 import { AsyncAddPostForm } from './AsyncAddPostForm'
-import { AsyncPostsAuthor } from './AsyncPostsAuthor'
-import { AsyncTimeAgo } from './AsyncTimeAgo'
-import { AsyncReactionButtons } from './AsyncReactionButtons'
+import { PostsExcerpt } from './PostsExcerpt'
+
 
 const style = {
     wrapper: {
@@ -37,28 +37,37 @@ const style = {
 
 export function AsyncPosts() {
 
+    const dispatch = useDispatch()
+
     const posts = useSelector(selectAllAsyncPosts)
+    const postsStatus = useSelector(getAsyncPostsStatus)
+    const error = useSelector(getAsyncPostsError)
 
-    const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
+    console.log(posts)
 
-    const renderPosts = orderedPosts.map(post => (
-        <Box key={post.id} sx={style.postWrapper}>
-            <Typography variant="h5" sx={style.postTitle}>{post.title}</Typography>
-            <Box sx={style.postContent}>{post.content.substring(0, 100)}</Box>
-            <Box sx={{ margin: '5px 0' }}>
-                <AsyncPostsAuthor userId={post.userId} />
-                <AsyncTimeAgo timestamp={post.date} />
-            </Box>
-            <AsyncReactionButtons post={post} />
-        </Box>
-    ))
 
+    useEffect(() => {
+        if (postsStatus === 'idle') {
+            dispatch(fetchPosts())
+        }
+    }, [postsStatus, dispatch])
+
+    let content
+
+    if (postsStatus === 'loading') {
+        <LinearProgress/>
+    } else if (postsStatus === 'succeeded') {
+        const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
+        content = orderedPosts.map(post => <PostsExcerpt key={post.id} post={post} />)
+    } else if (postsStatus === 'failed') {
+        content = <Typography>{error}</Typography>
+    }
 
     return (
         <Box sx={style.wrapper}>
             <AsyncAddPostForm />
             <Typography sx={style.title} variant="h3" >Посты</Typography>
-            {renderPosts}
+            {content}
         </Box>
     )
 }

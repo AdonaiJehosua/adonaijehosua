@@ -1,50 +1,26 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit"
+import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit"
+import axios from 'axios'
 import { sub } from "date-fns"
 
-const initialState = [
-    {
-        id: '1',
-        title: 'Hello',
-        content: 'Oh! Hello guys!',
-        date: sub(new Date(), { minutes: 10 }).toISOString(),
-        userId: '1',
-        reactions: {
-            thumbsUp: 0,
-            wow: 0,
-            heart: 0,
-            rocket: 0,
-            coffee: 0
-        },
-    },
-    {
-        id: '2',
-        title: 'Attention',
-        content: 'Exterminate!!!!',
-        date: sub(new Date(), { minutes: 5 }).toISOString(),
-        userId: '2',
-        reactions: {
-            thumbsUp: 0,
-            wow: 0,
-            heart: 0,
-            rocket: 0,
-            coffee: 0
-        },
-    },
-    {
-        id: '3',
-        title: '...',
-        content: '...',
-        date: sub(new Date(), { minutes: 4 }).toISOString(),
-        userId: '3',
-        reactions: {
-            thumbsUp: 0,
-            wow: 0,
-            heart: 0,
-            rocket: 0,
-            coffee: 0
-        },
-    },
-]
+const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
+
+const initialState = {
+    posts: [],
+    status: 'idle',
+    error: null
+}
+
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+    try {
+        const response = await axios.get(POSTS_URL)
+        return [...response.data]
+
+    } catch (err) {
+        return err.message
+    }
+})
+
+
 
 export const asyncPostsSlice = createSlice({
     name: 'asyncPosts',
@@ -52,14 +28,15 @@ export const asyncPostsSlice = createSlice({
     reducers: {
         asyncPostAdded: {
             reducer(state, action) {
-                state.push(action.payload)
+                state.posts.push(action.payload)
+
             },
-            prepare(title, content, userId) {
+            prepare(title, body, userId) {
                 return {
                     payload: {
                         id: nanoid(),
                         title,
-                        content,
+                        body,
                         date: new Date().toISOString(),
                         reactions: {
                             thumbsUp: 0,
@@ -75,15 +52,48 @@ export const asyncPostsSlice = createSlice({
         },
         asyncReactionAdded(state, action) {
             const { postId, reaction } = action.payload
-            const existingPost = state.find(post => post.id === postId)
+            const existingPost = state.posts.find(post => post.id === postId)
             if (existingPost) {
-                existingPost.reactions[reaction]++
+                existingPost.reaction[reaction]++
             }
         }
+    },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchPosts.pending, (state, action) => {
+                state.status = 'loading'
+                console.log(action)
+            })
+            .addCase(fetchPosts.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                console.log(action.payload)
+                let min = 1
+                const loadedPosts = action.payload.map(post => {
+                    post.date = sub(new Date(), { minutes: min++ }).toISOString()
+                    post.reaction = {
+                        thumbsUp: 0,
+                        hooray: 0,
+                        heart: 0,
+                        rocket: 0,
+                        eyes: 0
+                    }
+                    return post
+                })
+                state.posts = state.posts.concat(loadedPosts)
+
+            })
+            .addCase(fetchPosts.rejected, (state, action) => {
+                console.log(state.asyncPosts)
+                state.status = 'failed'
+                state.error = action.error.message
+            })
     }
+
 })
 
-export const selectAllAsyncPosts = (state) => state.asyncPosts
+export const selectAllAsyncPosts = (state) => state.asyncPosts.posts
+export const getAsyncPostsStatus = (state) => state.asyncPosts.status
+export const getAsyncPostsError = (state) => state.asyncPosts.error
 
 export const { asyncPostAdded, asyncReactionAdded } = asyncPostsSlice.actions
 export default asyncPostsSlice.reducer

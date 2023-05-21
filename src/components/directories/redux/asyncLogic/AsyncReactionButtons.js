@@ -4,10 +4,10 @@ import { Box, Button } from '@mui/material'
 
 const reactionEmoji = {
         thumbsUp: '👍',
-        wow: '🤩',
+        hooray: '🤩',
         heart: '💟',
         rocket: '🚀',
-        coffee: '☕'
+        eyes: '☕'
 }
 
 export const AsyncReactionButtons = ({post}) => {
@@ -20,7 +20,7 @@ export const AsyncReactionButtons = ({post}) => {
             key={name}
             onClick={() => dicpatch(asyncReactionAdded({postId: post.id, reaction: name}))}
             >
-                {emoji} {post.reactions[name]}
+                {emoji} {post.reaction[name]}
             </Button>
         )
     })

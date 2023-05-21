@@ -34,27 +34,27 @@ export const AsyncAddPostForm = () => {
     const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+    const [data, setData] = useState('')
     const [userId, setUserId] = useState('')
 
     const users = useSelector(selectAllAsyncUsers)
 
     const onTitleChange = e => setTitle(e.target.value)
-    const onContentChange = e => setContent(e.target.value)
+    const onDataChange = e => setData(e.target.value)
     const onAuthorChange = e => setUserId(e.target.value)
 
     const onSavePostClicked = () => {
-        if (title && content && userId) {
+        if (title && data && userId) {
             dispatch(
-                asyncPostAdded(title, content, userId)
+                asyncPostAdded(title, data, userId)
             )
             setTitle('')
-            setContent('')
+            setData('')
             setUserId('')
         }
     }
 
-    const cantSave = Boolean(title) && Boolean(content) && Boolean(userId)
+    const cantSave = Boolean(title) && Boolean(data) && Boolean(userId)
 
     const renderUsers = users.map(user => (
         <MenuItem key={user.id} sx={style.postWrapper} value={user.id}>
@@ -82,8 +82,8 @@ export const AsyncAddPostForm = () => {
                 <TextField
                     sx={style.textField}
                     label='Введите пост'
-                    value={content}
-                    onChange={onContentChange}
+                    value={data}
+                    onChange={onDataChange}
                 />
                 <Button sx={style.addButton}
                     variant='contained'
