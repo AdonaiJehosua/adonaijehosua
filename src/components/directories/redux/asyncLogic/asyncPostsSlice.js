@@ -14,13 +14,19 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     try {
         const response = await axios.get(POSTS_URL)
         return [...response.data]
-
     } catch (err) {
         return err.message
     }
 })
 
-
+export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPost) => {
+    try {
+        const response = await axios.post(POSTS_URL, initialPost)
+        return response.data
+    } catch (err) {
+        return err.message
+    }
+})
 
 export const asyncPostsSlice = createSlice({
     name: 'asyncPosts',
@@ -38,12 +44,12 @@ export const asyncPostsSlice = createSlice({
                         title,
                         body,
                         date: new Date().toISOString(),
-                        reactions: {
+                        reaction: {
                             thumbsUp: 0,
-                            wow: 0,
+                            eyes: 0,
                             heart: 0,
                             rocket: 0,
-                            coffee: 0
+                            hooray: 0
                         },
                         userId
                     }
@@ -62,11 +68,9 @@ export const asyncPostsSlice = createSlice({
         builder
             .addCase(fetchPosts.pending, (state, action) => {
                 state.status = 'loading'
-                console.log(action)
             })
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = 'succeeded'
-                console.log(action.payload)
                 let min = 1
                 const loadedPosts = action.payload.map(post => {
                     post.date = sub(new Date(), { minutes: min++ }).toISOString()
@@ -80,12 +84,22 @@ export const asyncPostsSlice = createSlice({
                     return post
                 })
                 state.posts = state.posts.concat(loadedPosts)
-
             })
             .addCase(fetchPosts.rejected, (state, action) => {
-                console.log(state.asyncPosts)
                 state.status = 'failed'
                 state.error = action.error.message
+            })
+            .addCase(addNewPost.fulfilled, (state, action) => {
+                action.payload.userId = Number(action.payload.userId)
+                action.payload.date = new Date().toISOString()
+                action.payload.reaction = {
+                    thumbsUp: 0,
+                    hooray: 0,
+                    heart: 0,
+                    rocket: 0,
+                    eyes: 0
+                }
+                state.posts.push(action.payload)
             })
     }
 

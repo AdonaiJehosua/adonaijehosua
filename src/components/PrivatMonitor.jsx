@@ -5,7 +5,6 @@ import { Directory } from './directories/Directory'
 import { FunctionalContent } from './directories/functionalProg/FunctionalContent'
 import { ReduxContent } from './directories/redux/ReduxContent'
 import { CssContent } from './directories/cssExamples/CssContent'
-import { Functional1 } from './directories/functionalProg/func1/Functional1'
 import desktopImage from '../images/fone/11.webp'
 
 const style = {
@@ -58,17 +57,8 @@ const style = {
         backgroundPosition: 'center',
         height: '100%',
         width: '100%',
-        // padding: '5px',
         position: 'relative'
     }
-}
-
-const SomeComponent = () => {
-    return (
-        <Box>
-            Some Content
-        </Box>
-    )
 }
 
 export const PrivatMonitor = () => {
@@ -96,7 +86,7 @@ export const PrivatMonitor = () => {
                         <Directory dirName={'FP'} DirContent=<FunctionalContent /> />
                         <Directory dirName={'CSS'} DirContent=<CssContent /> />
                         <Directory dirName={'typescript'} />
-                        <Directory dirName={'Redux'} DirContent=<ReduxContent />/>
+                        <Directory dirName={'Redux'} DirContent=<ReduxContent /> />
                     </Box>
                     <StartMenu />
                 </Box>

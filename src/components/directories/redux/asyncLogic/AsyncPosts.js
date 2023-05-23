@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { selectAllAsyncPosts, getAsyncPostsStatus, getAsyncPostsError, fetchPosts } from './asyncPostsSlice'
 import { AsyncAddPostForm } from './AsyncAddPostForm'
 import { PostsExcerpt } from './PostsExcerpt'
+import { fetchUsers } from "./asyncUsersSlice"
 
 
 const style = {
@@ -13,9 +14,7 @@ const style = {
         flexDirection: 'column',
         alignItems: 'center',
     },
-    title: {
-
-    },
+    title: {},
     postWrapper: {
         border: '1px solid #000',
         borderRadius: '10px',
@@ -26,13 +25,8 @@ const style = {
         alignItems: 'start',
         margin: '10px 0'
     },
-    postTitle: {
-
-    },
-    postContent: {
-
-    },
-
+    postTitle: {},
+    postContent: {},
 }
 
 export function AsyncPosts() {
@@ -43,19 +37,17 @@ export function AsyncPosts() {
     const postsStatus = useSelector(getAsyncPostsStatus)
     const error = useSelector(getAsyncPostsError)
 
-    console.log(posts)
-
-
     useEffect(() => {
         if (postsStatus === 'idle') {
             dispatch(fetchPosts())
+            dispatch(fetchUsers())
         }
     }, [postsStatus, dispatch])
 
     let content
 
     if (postsStatus === 'loading') {
-        <LinearProgress/>
+        <LinearProgress />
     } else if (postsStatus === 'succeeded') {
         const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
         content = orderedPosts.map(post => <PostsExcerpt key={post.id} post={post} />)

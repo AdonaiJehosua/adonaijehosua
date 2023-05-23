@@ -11,9 +11,7 @@ const style = {
       flexDirection: 'column',
       alignItems: 'center',
   },
-  title: {
-
-  },
+  title: {},
   postWrapper: {
       border: '1px solid #000',
       borderRadius: '10px',
@@ -24,12 +22,8 @@ const style = {
       alignItems: 'start',
       margin: '10px 0'
   },
-  postTitle: {
-
-  },
-  postContent: {
-
-  },
+  postTitle: {},
+  postContent: {},
 
 }
 

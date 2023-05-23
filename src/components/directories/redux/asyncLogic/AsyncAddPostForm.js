@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography, Select, MenuItem } from '@mui/mater
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { asyncPostAdded } from './asyncPostsSlice'
+import { addNewPost } from './asyncPostsSlice'
 import { selectAllAsyncUsers } from './asyncUsersSlice'
 
 const style = {
@@ -24,9 +24,7 @@ const style = {
         marginBottom: '10px',
         minWidth: '25vw'
     },
-    addButton: {
-
-    }
+    addButton: {}
 }
 
 export const AsyncAddPostForm = () => {
@@ -36,6 +34,7 @@ export const AsyncAddPostForm = () => {
     const [title, setTitle] = useState('')
     const [data, setData] = useState('')
     const [userId, setUserId] = useState('')
+    const [addRequestStatus, setAddRequestStatus] = useState('idle')
 
     const users = useSelector(selectAllAsyncUsers)
 
@@ -43,18 +42,23 @@ export const AsyncAddPostForm = () => {
     const onDataChange = e => setData(e.target.value)
     const onAuthorChange = e => setUserId(e.target.value)
 
+    const canSave = [title, data, userId].every(Boolean) && addRequestStatus === 'idle'
+
     const onSavePostClicked = () => {
-        if (title && data && userId) {
-            dispatch(
-                asyncPostAdded(title, data, userId)
-            )
-            setTitle('')
-            setData('')
-            setUserId('')
+        if (canSave) {
+            try {
+                setAddRequestStatus('pending')
+                dispatch(addNewPost({ title, body: data, userId })).unwrap()
+                setTitle('')
+                setData('')
+                setUserId('')
+            } catch (error) {
+                console.error('Failed to save the post ', error)
+            } finally {
+                setAddRequestStatus('idle')
+            }
         }
     }
-
-    const cantSave = Boolean(title) && Boolean(data) && Boolean(userId)
 
     const renderUsers = users.map(user => (
         <MenuItem key={user.id} sx={style.postWrapper} value={user.id}>
@@ -88,7 +92,7 @@ export const AsyncAddPostForm = () => {
                 <Button sx={style.addButton}
                     variant='contained'
                     onClick={onSavePostClicked}
-                    disabled={!cantSave}
+                    disabled={!canSave}
                 >Добавить</Button>
             </Box>
         </Box>

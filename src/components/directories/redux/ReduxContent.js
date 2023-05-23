@@ -6,11 +6,9 @@ import { AsyncPosts } from "./asyncLogic/AsyncPosts"
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 
-
-
 export function ReduxContent() {
     return (
-        <Provider store={ store }>
+        <Provider store={store}>
             <Box>
                 <DirectoryItem fileName={'Простой счетчик'} ItemContent=<SimpleCounter /> />
                 <DirectoryItem fileName={'Посты'} ItemContent=<Posts /> />
