@@ -10,6 +10,7 @@ const reactionEmoji = {
     eyes: '☕'
 }
 
+
 export const AsyncReactionButtons = ({ post }) => {
 
     const dicpatch = useDispatch()
@@ -17,7 +18,7 @@ export const AsyncReactionButtons = ({ post }) => {
     const asyncReactionsButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
         return (
             <Button
-                key={name}
+            key={name}
                 onClick={() => dicpatch(asyncReactionAdded({ postId: post.id, reaction: name }))}
             >
                 {emoji} {post.reaction[name]}

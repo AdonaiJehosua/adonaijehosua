@@ -1,9 +1,11 @@
-import { Box, Button, TextField, Typography, Select, MenuItem } from '@mui/material'
+import { Box, Button, TextField, Typography, Select, MenuItem, Tooltip } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { addNewPost } from './asyncPostsSlice'
 import { selectAllAsyncUsers } from './asyncUsersSlice'
+
+const tooltipTitle = 'Создать можно только один пост, потому что jsonplaceholder на post запрос не создает реальный экземпляр у себя на сервере, а как бы подделывает для ответа одну штучку. Поэтому каждый созданный пост будет приходить с сервера всегда с айдишником 101. Соотсветсвенно, второй же созданный пост поломает к черту весь map :)'
 
 const style = {
     wrapper: {
@@ -89,11 +91,13 @@ export const AsyncAddPostForm = () => {
                     value={data}
                     onChange={onDataChange}
                 />
-                <Button sx={style.addButton}
-                    variant='contained'
-                    onClick={onSavePostClicked}
-                    disabled={!canSave}
-                >Добавить</Button>
+                <Tooltip title={tooltipTitle}>
+                    <Button sx={style.addButton}
+                        variant='contained'
+                        onClick={onSavePostClicked}
+                        disabled={!canSave}
+                    >Добавить</Button>
+                </Tooltip>
             </Box>
         </Box>
     )
