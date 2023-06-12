@@ -116,6 +116,8 @@ const style = {
   }
 }
 
+console.log(!!cosmos)
+
 export default function Home() {
   return (
     <>
