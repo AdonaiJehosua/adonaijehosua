@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import Head from 'next/head'
 import cosmos from '../images/tengyart-lmrslsreZ2E-unsplash.jpg'
 import cosmonavt from '../images/cosmonavt.png'
@@ -116,6 +116,8 @@ const style = {
   }
 }
 
+const loadingImg = Boolean(cosmos)
+
 console.log(!!cosmos)
 
 export default function Home() {
@@ -127,6 +129,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {!loadingImg && <CircularProgress/> }
       <main>
         <Box sx={style.cosmos}></Box>
         <Box sx={style.itemsWrapper}>
