@@ -116,7 +116,7 @@ const style = {
   }
 }
 
-const loadingImg = Boolean(cosmos)
+const loadingImg = Boolean(cosmos && cosmonavt && ship)
 
 console.log(!!cosmos)
 
@@ -129,7 +129,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!loadingImg && <CircularProgress/> }
+      {!loadingImg ? <CircularProgress/> :
       <main>
         <Box sx={style.cosmos}></Box>
         <Box sx={style.itemsWrapper}>
@@ -145,6 +145,7 @@ export default function Home() {
           </Box>
         </Box>
       </main>
+}
     </>
   )
 }
