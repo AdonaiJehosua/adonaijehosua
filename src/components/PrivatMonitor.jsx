@@ -5,6 +5,7 @@ import { Directory } from './directories/Directory'
 import { FunctionalContent } from './directories/functionalProg/FunctionalContent'
 import { ReduxContent } from './directories/redux/ReduxContent'
 import { CssContent } from './directories/cssExamples/CssContent'
+import { AcademyHomeworks } from './directories/academyHomeworks/AcademyHomeworks'
 import desktopImage from '../images/fone/11.webp'
 
 const style = {
@@ -87,6 +88,7 @@ export const PrivatMonitor = () => {
                         <Directory dirName={'CSS'} DirContent=<CssContent /> />
                         <Directory dirName={'typescript'} />
                         <Directory dirName={'Redux'} DirContent=<ReduxContent /> />
+                        <Directory dirName={'Домашки акадкмии'} DirContent=<AcademyHomeworks />/>
                     </Box>
                     <StartMenu />
                 </Box>
