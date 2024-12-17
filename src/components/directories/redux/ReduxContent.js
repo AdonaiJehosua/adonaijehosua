@@ -3,7 +3,7 @@ import { DirectoryItem } from "../DirectoryItem"
 import { SimpleCounter } from "./simpleCounter/SimpleCounter"
 import { Posts } from "./posts/Posts"
 import { AsyncPosts } from "./asyncLogic/AsyncPosts"
-import { Blog } from "./Blog/Blog"
+import { Blog } from "./blog/Blog"
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 
