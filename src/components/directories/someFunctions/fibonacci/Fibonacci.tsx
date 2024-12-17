@@ -2,26 +2,54 @@ import {Button, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import {simpleFibonacci} from "./functions/simpleFibonacci";
 import {nthFibonacci} from './functions/n-thFibonacci';
+import {getLastBigFibDigit} from './functions/lastDigit';
+import {CodeBlock} from 'react-code-blocks';
+
+
+console.log(simpleFibonacci.toString());
 
 export function Fibonacci(): JSX.Element {
-    const [text, setText] = useState<string | undefined>();
+    const [fibArr, setFibArr] = useState<string | undefined>();
+    const [fibArrLength, setFibArrLength] = useState<number>(1);
+    const onFibArrHandler = () => setFibArr(simpleFibonacci(fibArrLength).join(' '))
+
     const [nthFib, setNthFib] = useState<number>();
+    const [lastBigFibDigit, setLastBigFibDigit] = useState<number>();
+    const onNthFibHandler = () => {
+        setNthFib(nthFibonacci(fibNumber));
+    }
+
+    const [bigFibNumber, setBigFibNumber] = useState<number>(1);
     const [fibNumber, setFibNumber] = useState<number>(1);
-    const onSimpleHandler = () => setText(simpleFibonacci(20).join(' '))
-    const onNthFibHandler = () => {setNthFib(nthFibonacci(fibNumber));}
+    const onLastBigFibDigitHandler = () => {
+        setLastBigFibDigit(getLastBigFibDigit(bigFibNumber));
+    }
 
     return (
         <div>
             <div>
-                <h1>Простая последовательность 20 первых чисел</h1>
-                <Button onClick={onSimpleHandler}>Сгенерировать</Button>
-                <Typography>Последовательность: {text}</Typography>
+                <h1>Простая последовательность первых чисел</h1>
+                <CodeBlock
+                    text={simpleFibonacci.toString()}
+                />
+                <TextField InputProps={{inputProps: {min: 1}}} type={'number'} value={fibArrLength}
+                           onChange={(event) => setFibArrLength(parseInt(event.target.value))}></TextField>
+                <Button onClick={onFibArrHandler}>Показать первые {fibArrLength} чисел последовательности</Button>
+                <Typography>Последовательность: {fibArr}</Typography>
             </div>
             <div>
                 <h1>N-ное число Фибоначчи в интервале от 1 до 40</h1>
-                <TextField InputProps={{ inputProps: { min: 1, max: 40 } }} type={'number'} value={fibNumber} onChange={(event) => setFibNumber(parseInt(event.target.value))}>Сгенерировать</TextField>
+                <TextField InputProps={{inputProps: {min: 1, max: 40}}} type={'number'} value={fibNumber}
+                           onChange={(event) => setFibNumber(parseInt(event.target.value))}></TextField>
                 <Button onClick={onNthFibHandler}>Показать {fibNumber}-е число</Button>
                 <Typography>Число: {nthFib}</Typography>
+            </div>
+            <div>
+                <h1>Последняя цифра большого числа Фибоначчи</h1>
+                <TextField InputProps={{inputProps: {min: 1}}} type={'number'} value={bigFibNumber}
+                           onChange={(event) => setBigFibNumber(parseInt(event.target.value))}></TextField>
+                <Button onClick={onLastBigFibDigitHandler}>Показать последнюю цифру {bigFibNumber}-го числа</Button>
+                <Typography>Последняя цифра: {lastBigFibDigit}</Typography>
             </div>
         </div>
     )
