@@ -3,7 +3,7 @@ import {useState} from "react";
 import {simpleFibonacci} from "./functions/simpleFibonacci";
 import {nthFibonacci} from './functions/n-thFibonacci';
 import {getLastBigFibDigit} from './functions/lastDigit';
-import {CodeBlock} from 'react-code-blocks';
+import {CopyBlock, a11yLight} from 'react-code-blocks';
 
 
 console.log(simpleFibonacci.toString());
@@ -29,8 +29,11 @@ export function Fibonacci(): JSX.Element {
         <div>
             <div>
                 <h1>Простая последовательность первых чисел</h1>
-                <CodeBlock
+                <CopyBlock
+                    theme={a11yLight}
+                    language={'JavaScript'}
                     text={simpleFibonacci.toString()}
+                    codeBlock
                 />
                 <TextField InputProps={{inputProps: {min: 1}}} type={'number'} value={fibArrLength}
                            onChange={(event) => setFibArrLength(parseInt(event.target.value))}></TextField>
@@ -39,6 +42,12 @@ export function Fibonacci(): JSX.Element {
             </div>
             <div>
                 <h1>N-ное число Фибоначчи в интервале от 1 до 40</h1>
+                <CopyBlock
+                    theme={a11yLight}
+                    language={'JavaScript'}
+                    text={nthFibonacci.toString()}
+                    codeBlock
+                />
                 <TextField InputProps={{inputProps: {min: 1, max: 40}}} type={'number'} value={fibNumber}
                            onChange={(event) => setFibNumber(parseInt(event.target.value))}></TextField>
                 <Button onClick={onNthFibHandler}>Показать {fibNumber}-е число</Button>
@@ -46,6 +55,12 @@ export function Fibonacci(): JSX.Element {
             </div>
             <div>
                 <h1>Последняя цифра большого числа Фибоначчи</h1>
+                <CopyBlock
+                    theme={a11yLight}
+                    language={'JavaScript'}
+                    text={getLastBigFibDigit.toString()}
+                    codeBlock
+                />
                 <TextField InputProps={{inputProps: {min: 1}}} type={'number'} value={bigFibNumber}
                            onChange={(event) => setBigFibNumber(parseInt(event.target.value))}></TextField>
                 <Button onClick={onLastBigFibDigitHandler}>Показать последнюю цифру {bigFibNumber}-го числа</Button>
