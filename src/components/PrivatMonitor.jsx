@@ -8,6 +8,7 @@ import { CssContent } from './directories/cssExamples/CssContent'
 import { AcademyHomeworks } from './directories/academyHomeworks/AcademyHomeworks'
 import { SomeFunctions } from './directories/someFunctions/SomeFunctions'
 import desktopImage from '../images/fone/11.webp'
+import {ThreeJSContent} from '@/components/directories/threejs/ThreejsContent';
 
 const style = {
     monitor: {
@@ -91,6 +92,7 @@ export const PrivatMonitor = () => {
                         <Directory dirName={'Redux'} DirContent=<ReduxContent /> />
                         <Directory dirName={'Домашки акадкмии'} DirContent=<AcademyHomeworks />/>
                         <Directory dirName={'Разные функции'} DirContent=<SomeFunctions />/>
+                        <Directory dirName={'ThreeJS'} DirContent=<ThreeJSContent />/>
                     </Box>
                     <StartMenu />
                 </Box>

@@ -4,6 +4,7 @@ import { SimpleCounter } from "./simpleCounter/SimpleCounter"
 import { Posts } from "./posts/Posts"
 import { AsyncPosts } from "./asyncLogic/AsyncPosts"
 import { Blog } from "./blog/Blog"
+import { Abyrvalp } from "./abyrvalp/Abyrvalp"
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 
@@ -15,6 +16,7 @@ export function ReduxContent() {
                 <DirectoryItem fileName={'Посты'} ItemContent=<Posts /> />
                 <DirectoryItem fileName={'Асинхронные посты'} ItemContent=<AsyncPosts /> />
                 <DirectoryItem fileName={'Блог'} ItemContent=<Blog /> />
+                <DirectoryItem fileName={'АбырвалП'} ItemContent=<Abyrvalp /> />
             </Box>
         </Provider>
     )

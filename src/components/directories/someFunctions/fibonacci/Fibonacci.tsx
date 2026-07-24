@@ -4,6 +4,7 @@ import {simpleFibonacci} from "./functions/simpleFibonacci";
 import {nthFibonacci} from './functions/n-thFibonacci';
 import {getLastBigFibDigit} from './functions/lastDigit';
 import {CopyBlock, a11yLight} from 'react-code-blocks';
+import {BlockWithVariableField} from '@/components/functions-blocks/blockWithVariableField';
 
 
 console.log(simpleFibonacci.toString());
@@ -40,6 +41,13 @@ export function Fibonacci(): JSX.Element {
                 <Button onClick={onFibArrHandler}>Показать первые {fibArrLength} чисел последовательности</Button>
                 <Typography>Последовательность: {fibArr}</Typography>
             </div>
+            <BlockWithVariableField
+                title={'N-ное число Фибоначчи в интервале от 1 до 40'}
+                resultTitle={'Число'}
+                func={nthFibonacci}
+                startResultValue={1}
+                startVariable={1}
+            />
             <div>
                 <h1>N-ное число Фибоначчи в интервале от 1 до 40</h1>
                 <CopyBlock
